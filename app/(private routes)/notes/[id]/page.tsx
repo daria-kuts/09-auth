@@ -13,8 +13,8 @@ export async function generateMetadata(
 
   const { id } = await params;
 
-  const note = await fetchNoteById(id);
-
+  const response = await fetchNoteById(id);
+  const note = response.data;
   return {
     title: note.title,
     description: note.content.slice(0, 120),

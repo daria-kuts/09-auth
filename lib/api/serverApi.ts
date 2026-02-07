@@ -4,9 +4,7 @@ import type { Note } from "@/types/note";
 import type { User } from "@/types/user";
 import type { AxiosResponse } from "axios";
 
-/**
- * Собираем cookies в строку
- */
+
 const getCookieHeader = async (): Promise<string> => {
   const cookieStore = await cookies();
 
@@ -16,9 +14,7 @@ const getCookieHeader = async (): Promise<string> => {
     .join("; ");
 };
 
-/**
- * Универсальный helper
- */
+
 const serverRequest = async <T>(
   url: string,
   config?: object
