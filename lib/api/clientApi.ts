@@ -1,7 +1,7 @@
 import { api } from "./api";
 import type { Note } from "@/types/note";
 import { User } from "@/types/user";
-import type { AxiosResponse } from "axios";
+
 
 
 export interface FetchNotesParams {
@@ -73,8 +73,9 @@ export const checkSession = async (): Promise<User | null> => {
 };
 
 
-export const getMe = (): Promise<AxiosResponse<User>> => {
-  return api.get("/users/me");
+export const getMe = async (): Promise<User> => {
+  const { data } = await api.get("/users/me");
+  return data;
 };
 
 export const updateMe = async (username: string): Promise<User> => {

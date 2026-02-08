@@ -15,22 +15,22 @@ export default function AuthProvider({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  const initAuth = async () => {
-    try {
-      await checkSession();
+    const initAuth = async () => {
+      try {
+        await checkSession();
 
-      const { data } = await getMe();
-      setUser(data);
+        const user = await getMe();
+        setUser(user);
 
-    } catch {
-      clear();
-    } finally {
-      setLoading(false);
-    }
-  };
+      } catch {
+        clear();
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  initAuth();
-}, [setUser, clear]);
+    initAuth();
+  }, [setUser, clear]);
 
   if (loading) return <p>Loading...</p>;
 
